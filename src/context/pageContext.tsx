@@ -1,17 +1,18 @@
 "use client"
 
+import type { PageConfigType } from "@/types";
 import { useState, useContext, createContext } from "react";
 
-const BlogContext = createContext({});
+const BlogContext = createContext<PageConfigType>({} as PageConfigType);
 
-export const PageProvider = ({ children, config }: Readonly<{ children: React.ReactNode, config?: any}> ) => {
+export const PageProvider = ({ children, config }: Readonly<{ children: React.ReactNode, config?: PageConfigType}> ) => {
   const [pageConfig] = useState(config);
-  console.log(pageConfig);
+
   return (
-    <BlogContext.Provider value={pageConfig}>
+    <BlogContext.Provider value={pageConfig as PageConfigType}>
       {children}
     </BlogContext.Provider>
   )
 }
 
-export const usePage = () => useContext(BlogContext);
+export const usePage = (): PageConfigType => useContext(BlogContext);

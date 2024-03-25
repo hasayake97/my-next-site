@@ -1,3 +1,12 @@
 {
-  "title": "@unot.net"
+  "$schema": "http://json.schemastore.org/global",
+
+  "title": "@unot.net",
+  "author": "hasayake.luo",
+  "greeting": "Hi, I'm hasayake.luo👋",
+  "description": [
+    "我来自中国，九七年出生于江西省内的一座小城，工作已有六年余。毕业于 2018 级南昌大学统招大专，可能令人疑惑，其间说来话长，但事实如此。",
+    "自 2022 年就职于深圳华强电子网集团股份有限公司 · IT 技术中心 · 架构设计组，任前端开发工程师一职。主要工作包括技术疑难攻坚、性能优化、方案设计、文档编写及业务开发迭代。在我既往经历中，有过两三余人至十余人的前端团队组建及管理经验。自 2021 年始致力于前端工程化建设，项目渐进式重构。",
+    "我的主要技术栈是 HTML、CSS、JavaScript，熟悉的框架有 Vue.js、React、Solid、Svelte等。"
+  ]
 }
