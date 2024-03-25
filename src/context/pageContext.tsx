@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import type { PageConfigType } from "@/types";
 import { useState, useContext, createContext } from "react";
@@ -13,6 +13,6 @@ export const PageProvider = ({ children, config }: Readonly<{ children: React.Re
       {children}
     </BlogContext.Provider>
   )
-}
+};
 
 export const usePage = (): PageConfigType => useContext(BlogContext);
