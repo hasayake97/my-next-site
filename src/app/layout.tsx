@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import pageConfig from "@/../page.config.json";
+
+import Header from "@/components/header";
+import { PageProvider } from "@/context/pageContext";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -15,8 +20,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="zh-Hans-CN">
+      <body className={`${inter.className} bg-background-image`}>
+        <PageProvider config={pageConfig}>
+          <Header />
+          <main className="px-6 py-2">
+            { children }
+          </main>
+        </PageProvider>
+      </body>
     </html>
   );
 }
