@@ -4,7 +4,7 @@ export type PageConfigType = {
   email: string
   greeting: string
   description: string[]
-  links: [string, string][]
+  links: string[][]
 }
 
 export type TextPropsType = Readonly<{
