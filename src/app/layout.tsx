@@ -22,12 +22,12 @@ export default function RootLayout({
   return (
     <html lang="zh-Hans-CN">
       <body className={`${inter.className} bg-background-image`}>
-        <PageProvider config={pageConfig}>
-          <Header />
+      <PageProvider config={pageConfig}>
+        <Header />
           <main className="px-6 py-2">
             { children }
           </main>
-        </PageProvider>
+      </PageProvider>
       </body>
     </html>
   );
