@@ -152,3 +152,6 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
+# DRY
+.idea
+.vscode
