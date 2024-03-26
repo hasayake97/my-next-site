@@ -6,11 +6,15 @@
   "greeting": "Hi, I'm hasayake.luo👋",
   "description": [
     "我来自中国，九七年出生于江西省内的一座小城，工作已有六年余。",
-    "自 2022 年就职于深圳华强电子网集团股份有限公司 · IT 技术中心 · 架构设计组，任前端开发工程师一职。主要工作包括技术疑难攻坚、性能优化、方案设计、文档编写及业务开发迭代。在我既往经历中，有过两三余人至十余人的前端团队组建及管理经验。自 2021 年始致力于前端工程化建设，项目渐进式重构。",
+    "现就职于深圳华强电子网集团股份有限公司 · IT 技术中心 · 架构设计组，任前端开发工程师一职。主要工作包括技术疑难攻坚、性能优化、方案设计、文档编写及业务开发迭代。在我既往经历中，有过两三余人至十余人的前端团队组建及管理经验。自 2021 年始致力于前端工程化建设，项目渐进式重构。",
     "我的主要技术栈是 HTML、CSS、JavaScript/Node.js，熟悉的框架有 Vue.js、React、Solid、Svelte等。日常工作中接触过 Python、PHP、Rust、Go 等语言。"
   ],
   "links": [
-    ["Apple Music", "https://music.apple.com/library/playlist/p.eoGxRMKIZRma8qN"],
+    ["My Blog", "https://blog.unot.net"],
+    ["Apple Music", "https://music.apple.com/cn/playlist/%E6%88%91%E7%9A%84%E6%94%B6%E8%97%8F/pl.u-WabZvdVHe4VbalX"],
     ["me@unot.net", "mailto:me@unot.net"]
+  ],
+  "footers": [
+    "&copy;2017-2024 This site is built using <a href='https://nextjs.org/' target='_blank'>Next.js</a> + <a href='https://tailwindcss.com/' target='_blank'>Tailwind CSS</a> and is hosted and deployed on <a href='https://vercel.com/' target='_blank'>Vercel</a>."
   ]
 }

@@ -1,17 +1,9 @@
 "use client";
 
-import type { TextPropsType } from '@/types';
 import { usePage } from "@/context/pageContext";
 
 import Link from "next/link";
-
-const Text = ({ children, inlineBlock }: TextPropsType) => {
-  return (
-    <p className={`p-1 bg-white ${inlineBlock ? 'inline-block' : ''}`}>
-      {children}
-    </p>
-  );
-};
+import Text from "@/components/text";
 
 export default function Page() {
   const { links, greeting, description } = usePage();
@@ -39,14 +31,13 @@ export default function Page() {
             links.map(link => (
               <li key={link[0]} className="mb-2 list-disc ml-4 pl-2">
                 <Text inlineBlock>
-                  <Link href={link[1]}>{link[0]}</Link>
+                  <Link href={link[1]} target="_blank">{link[0]}</Link>
                 </Text>
               </li>
             ))
           }
         </ul>
       </section>
-
     </article>
   )
 };

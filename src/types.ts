@@ -5,6 +5,7 @@ export type PageConfigType = {
   greeting: string
   description: string[]
   links: string[][]
+  footers: string[]
 }
 
 export type TextPropsType = Readonly<{
