@@ -12,7 +12,8 @@
   "links": [
     ["My Blog", "https://blog.unot.net"],
     ["Apple Music", "https://music.apple.com/cn/playlist/%E6%88%91%E7%9A%84%E6%94%B6%E8%97%8F/pl.u-WabZvdVHe4VbalX"],
-    ["me@unot.net", "mailto:me@unot.net"]
+    ["NetEase Cloud Music", "https://music.163.com/#/user/home?id=5840872"],
+    ["Email Address: me@unot.net", "mailto:me@unot.net"]
   ],
   "footers": [
     "&copy;2017-2024 This site is built using <a href='https://nextjs.org/' target='_blank'>Next.js</a> + <a href='https://tailwindcss.com/' target='_blank'>Tailwind CSS</a> and is hosted and deployed on <a href='https://vercel.com/' target='_blank'>Vercel</a>."
