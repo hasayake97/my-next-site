@@ -35,11 +35,14 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
         <Text inlineBlock>{children}</Text>
       </h5>
     ),
+
     hr: () => (<hr className="bg-black h-1 mb-6" />),
 
     p: ({ children }) => (<Text inlineBlock className="mb-6">{children}</Text>),
 
-    a: ({ children, href }) => (<Link href={href} target="_blank">{children}</Link>),
+    a: ({ children, ...args }: typeof Link) => {
+      return (<Link {...args} target="_blank">{children}</Link>)
+    },
 
     img: (props) => (<Image {...props} width={400} height={400} className="mx-auto object-fill" />),
 
