@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import pageConfig from "@/../page.config.json";
 
 import Header from "@/components/header";
-import Footer from "@/components/footer/index";
 import { PageProvider } from "@/context/pageContext";
 
 import "./globals.css";
@@ -28,7 +27,6 @@ export default function RootLayout({
           <main className="px-6 py-2 max-w-4xl">
             { children }
           </main>
-          <Footer />
         </PageProvider>
       </body>
     </html>
