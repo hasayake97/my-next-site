@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types";
 
-import Link from "next/link";
+import Link, { LinkProps } from "next/link";
 import Image from "next/image";
 import Text from "@/components/text";
 
@@ -40,8 +40,8 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
 
     p: ({ children }) => (<Text inlineBlock className="mb-6">{children}</Text>),
 
-    a: ({ children, ...args }: typeof Link) => {
-      return (<Link {...args} target="_blank">{children}</Link>)
+    a: ({ children, ...args }) => {
+      return (<Link {...args as LinkProps} target="_blank">{children}</Link>)
     },
 
     img: (props) => (<Image {...props} width={400} height={400} className="mx-auto object-fill" />),
