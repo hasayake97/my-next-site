@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={`${inter.className} bg-background-image`}>
         <PageProvider config={pageConfig}>
           <Header />
-          <main className="px-6 py-2">
+          <main className="px-6 py-2 max-w-4xl">
             { children }
           </main>
           <Footer />
