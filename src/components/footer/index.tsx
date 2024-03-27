@@ -5,18 +5,9 @@ import FooterText from "./footer.mdx";
 const Footer = () => {
   return (
     <footer className="px-6 pt-24 pb-4 relative">
-      <p className="sm:text-sm sm:absolute sm:bottom-6 text-xs">
+      <div className="sm:text-sm sm:absolute sm:bottom-6 text-xs">
         <FooterText />
-        {/*{*/}
-        {/*  footers.map(footer => (*/}
-        {/*    <li key={footer}>*/}
-        {/*      <Text inlineBlock>*/}
-        {/*        <span dangerouslySetInnerHTML={{ __html: footer }} />*/}
-        {/*      </Text>*/}
-        {/*    </li>*/}
-        {/*  ))*/}
-        {/*}*/}
-      </p>
+      </div>
     </footer>
   );
 };

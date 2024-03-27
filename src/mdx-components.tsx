@@ -40,8 +40,8 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
 
     p: ({ children }) => (<Text inlineBlock className="mb-6">{children}</Text>),
 
-    a: ({ children, ...args }) => {
-      return (<Link {...args as LinkProps} target="_blank">{children}</Link>)
+    a: (props) => {
+      return (<Link {...({ ...props, target: '_blank' } as LinkProps)} />)
     },
 
     img: (props) => (<Image {...props} width={400} height={400} className="mx-auto object-fill" />),
