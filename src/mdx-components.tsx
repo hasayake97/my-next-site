@@ -42,7 +42,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
 
     a: (props) => (<Link {...({ ...props, target: "_blank" } as LinkProps)} />),
 
-    img: (props) => (<Image {...({ ...props, width: 400, height: 400, className: 'mx-auto object-fill' } as ImageProps)} />),
+    img: (props) => (<Image {...({ ...props, width: 400, height: 400, className: "mx-auto object-fill" } as ImageProps)} />),
 
     li: ({ children }) => {
       if (Array.isArray(children)) {
