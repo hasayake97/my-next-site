@@ -25,7 +25,15 @@ body {
 }
 
 a {
-  text-decoration: underline;
+  @apply underline;
+}
+
+li {
+  @apply mb-2 list-disc list-inside;
+}
+
+li > ul {
+  @apply ml-6 mt-4;
 }
 
 @layer utilities {

@@ -10,8 +10,8 @@ export default function Page() {
 
   return (
     <article>
-      <h1 className="sm:text-5xl md:text-6xl font-bold tracking-wider text-3xl inline-block">
-        <Text>{greeting}</Text>
+      <h1 className="sm:text-5xl md:text-6xl font-bold tracking-wider text-3xl">
+        <Text inlineBlock>{greeting}</Text>
       </h1>
 
       <section className="text-wrap max-w-4xl">
