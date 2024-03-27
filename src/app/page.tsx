@@ -25,7 +25,7 @@ export default function Page() {
       </section>
 
       <section className="mt-6">
-        <Text inlineBlock>您可以通过以下方式联系我：</Text>
+        <Text inlineBlock>您可以通过以下方式找到我：</Text>
         <ul className="mt-6">
           {
             links.map(link => (
