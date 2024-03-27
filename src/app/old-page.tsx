@@ -5,7 +5,7 @@ import { usePage } from "@/context/pageContext";
 import Link from "next/link";
 import Text from "@/components/text";
 
-export default function Page() {
+export default function OldPage() {
   const { links, greeting, description } = usePage();
 
   return (
