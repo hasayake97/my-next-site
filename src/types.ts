@@ -6,6 +6,11 @@ export type PageConfigType = {
   description: string
 }
 
+export type NavListType = {
+  href: string
+  label: string
+}[]
+
 export type TextPropsType = Readonly<{
   inlineBlock?: boolean
   className?: string
