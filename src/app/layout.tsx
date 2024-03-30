@@ -1,7 +1,7 @@
+import pageConfig from "@page";
+
 import type { Metadata } from "next";
 import { Noto_Serif_SC } from "next/font/google";
-import pageConfig from "@/../page.config.json";
-
 import Header from "@/components/header";
 import { PageProvider } from "@/context/pageContext";
 
@@ -15,7 +15,7 @@ const notoSerifSC = Noto_Serif_SC({
 
 export const metadata: Metadata = {
   title: pageConfig.title,
-  description: "blog unot.net hasayake.luo",
+  description: pageConfig.description,
 };
 
 export default function RootLayout({

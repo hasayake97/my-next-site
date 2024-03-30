@@ -3,9 +3,7 @@ export type PageConfigType = {
   author: string
   email: string
   greeting: string
-  description: string[]
-  links: string[][]
-  footers: string[]
+  description: string
 }
 
 export type TextPropsType = Readonly<{
