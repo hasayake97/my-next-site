@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Text from "@/components/text"
-import DateText from "@/components/date-text";
+import DateText from "@/components/data-text";
 
 const Footer = () => {
   return (
