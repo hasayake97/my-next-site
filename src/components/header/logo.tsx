@@ -1,13 +1,13 @@
 "use client";
 
-import Link from "next/link";
+import LinkExt from "@/components/link-ext";
 import { usePage } from "@/context/pageContext";
 
 const Logo = () => {
   const pageConfig = usePage();
 
   return (
-    <Link href="/" className="bg-black text-white px-1">{pageConfig.title}</Link>
+    <LinkExt href="/" className="bg-black text-white px-1">{pageConfig.title}</LinkExt>
   )
 };
 
