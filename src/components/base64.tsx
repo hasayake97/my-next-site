@@ -26,7 +26,7 @@ const Base64 = ({ children }: Readonly<{ children: React.ReactNode }>) => {
     }))
   }, [_children]);
 
-  return <span onClick={onClick} title="点击有惊喜😄">{base64State.children}</span>
+  return <span onClick={onClick} className="cursor-pointer">{base64State.children}</span>
 };
 
 export default Base64;
