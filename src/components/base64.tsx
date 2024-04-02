@@ -20,9 +20,9 @@ const Base64 = ({ children }: Readonly<{ children: React.ReactNode }>) => {
   })
 
   const onClick = useCallback(() => {
-    setBase64State(prev => ({
-      isBase64: !prev.isBase64,
-      children: !prev.isBase64 ? toEncoder(_children) : toDecoder(prev.children)
+    setBase64State(({ children, isBase64 }) => ({
+      isBase64: !isBase64,
+      children: !isBase64 ? toEncoder(_children) : toDecoder(children)
     }))
   }, [_children]);
 
