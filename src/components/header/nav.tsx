@@ -1,5 +1,5 @@
-import Link from "next/link";
 import Text from "@/components/text";
+import LinkExt from "@/components/link-ext";
 
 import type { NavListType } from "@/types";
 
@@ -15,7 +15,7 @@ const Nav = () => {
           NavList.map(navItem => (
             <li key={navItem.label} className="list-none sm:mr-8 list-inside last:mr-0 mb-0 mt-2 sm:mt-0">
               <Text className="py-0 sm:text-base text-sm">
-                <Link href={navItem.href} target="_blank">{navItem.label}</Link>
+                <LinkExt href={navItem.href}>{navItem.label}</LinkExt>
               </Text>
             </li>
           ))
