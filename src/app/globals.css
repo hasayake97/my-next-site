@@ -10,6 +10,7 @@
 
   --max-content-width: 960px;
   --min-content-width: 320px;
+  --music-player-height: 48px;
 }
 
 @media (prefers-color-scheme: dark) {

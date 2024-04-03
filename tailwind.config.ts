@@ -15,6 +15,9 @@ const config: Config = {
       minWidth:{
         "content": "var(--min-content-width)"
       },
+      boxShadow: {
+        "music-player": "0 0 12px 6px rgba(0, 0, 0, .2)"
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "background-image": "url('data:image/svg+xml;charset=utf-8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4\" height=\"4\"><circle cx=\"2\" cy=\"2\" r=\".5\"/></svg>')",

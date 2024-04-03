@@ -3,6 +3,10 @@ import { lazy, Suspense, ComponentType } from "react";
 
 type PromiseComponent = Promise<{default: ComponentType<any>}>
 type Loader = () => PromiseComponent
+interface LazyLoaderProps {
+  props?: {}
+  loader: Loader
+}
 
 // const getRandom = (max: number) => Math.ceil(Math.random() * max)
 
@@ -10,12 +14,12 @@ type Loader = () => PromiseComponent
 //   return () => new Promise(resolve => setTimeout(() => resolve(promise), delay))
 // }
 
-const LazyLoader = ({ loader }: { loader: Loader }) => {
+const LazyLoader = ({ props, loader }: LazyLoaderProps) => {
   const LazyComponent = lazy(loader)
 
   return (
     <Suspense fallback={<Loading />}>
-      <LazyComponent />
+      <LazyComponent {...props} />
     </Suspense>
   );
 };
