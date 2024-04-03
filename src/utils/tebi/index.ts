@@ -34,4 +34,4 @@ class TebiClient {
   }
 }
 
-export default new TebiClient();
+export default TebiClient;

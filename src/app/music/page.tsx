@@ -5,8 +5,10 @@ import LazyLoader from "@/components/lazy-loader";
 
 export const revalidate = 3600;
 
+const Client = new TebiClient();
+
 const Page = async () => {
-  const playList = await TebiClient.getObjects({ bucket: process.env.TEBI_BUCKET_MUSIC_NAME as string });
+  const playList = await Client.getObjects({ bucket: process.env.TEBI_BUCKET_MUSIC_NAME as string });
 
   return (
     <>
