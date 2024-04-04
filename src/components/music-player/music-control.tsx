@@ -61,7 +61,7 @@ const MusicControl = ({ audioState, onPlayingChange }: { audioState: AudioState,
   return (
     <section className="h-[var(--music-player-height)]">
       <div
-        className={`${isExpand && "translate-y-0"} box-border fixed left-0 bottom-0 bg-white translate-y-[var(--music-player-height)] transition-transform delay-500 duration-500 ease-in-out w-full h-[var(--music-player-height)] shadow-music-player bg-background-image z-[99] border-t-black border p-2`}>
+        className={`${isExpand ? "translate-y-0" : "translate-y-[var(--music-player-height)]"} box-border fixed left-0 bottom-0 bg-white transition-transform delay-500 duration-500 ease-in-out w-full h-[var(--music-player-height)] shadow-music-player bg-background-image z-[99] border-t-black border p-2`}>
         <div className="w-full h-full lg:w-[920px] lg:px-6 px-2 mx-auto flex items-center bg-white">
           <AudioButton playing={audioState.playing} onChange={onPlayingChange} />
 
