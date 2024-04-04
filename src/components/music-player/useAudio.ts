@@ -1,8 +1,7 @@
 import {
   useRef,
   useMemo,
-  useCallback,
-  MutableRefObject
+  useCallback
 } from "react";
 
 interface Callback {
@@ -17,7 +16,7 @@ const useAudio = () => {
       audioRef.current.pause()
       audioRef.current.src = url;
       return
-    };
+    }
 
     callback(audioRef.current = new Audio());
   }, []);
@@ -34,7 +33,7 @@ const useAudio = () => {
     run,
     destroy,
     ref: audioRef
-  }), []);
+  }), [run, destroy, audioRef]);
 };
 
 export default useAudio;

@@ -75,7 +75,7 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
       type: "change",
       payload: { playing }
     })
-  }, [audioState.src])
+  }, [audioState.src, audio.ref])
 
   // Audio 创建或音乐文件发生变化
   useEffect(() => {
@@ -83,13 +83,13 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
       ref.addEventListener("canplay", onCanplay, false);
       ref.addEventListener("timeupdate", onTimeupdate, false);
     });
-  }, [audioState.src]);
+  }, [audio, audioState.src, onCanplay, onTimeupdate]);
 
   useEffect(() => {
     if (audio.ref.current?.src) {
       audioState.playing ? audio.ref.current?.play() : audio.ref.current?.pause();
     }
-  }, [audioState.playing]);
+  }, [audioState.playing, audio.ref]);
 
   // 组件卸载
   useEffect(() => {
@@ -99,7 +99,7 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
         ref.removeEventListener("timeupdate", onTimeupdate, false);
       })
     }
-  } ,[])
+  } ,[audio, onCanplay, onTimeupdate])
 
   return (
     <>

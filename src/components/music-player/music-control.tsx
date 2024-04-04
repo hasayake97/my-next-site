@@ -1,8 +1,8 @@
-import {useCallback, useEffect, useState} from "react";
+import { useCallback } from "react";
 import { AudioState } from "./types";
 
-const timeFomatter = (time: number) => {
-  if (typeof time !== "number") { return "00:00" };
+const timeFomatter = (time: number | undefined) => {
+  if (typeof time !== "number") { return "00:00" }
 
   const minutes = Math.floor(time / 60);
   const seconds = time % 60;
@@ -31,7 +31,7 @@ type OnChangeFunc = (playing: boolean) => void
 const AudioButton = ({ playing, onChange } : { playing: boolean, onChange: OnChangeFunc }) => {
   const onClick = useCallback(() => {
     onChange(!playing)
-  }, [playing])
+  }, [playing, onChange])
 
   return (
     <button onClick={onClick}>
