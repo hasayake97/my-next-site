@@ -9,13 +9,15 @@ const Client = new TebiClient();
 
 const Page = async () => {
   const playList = await Client.getObjects({
-    bucket: process.env.TEBI_BUCKET_MUSIC_NAME as string
+    bucket: process.env.NEXT_PUBLIC_TEBI_BUCKET_MUSIC_NAME as string
   });
 
   return (
     <>
       <Content />
-      <LazyLoader loader={() => import("@/components/music-player")} props={{ playList }} />
+      {
+        playList.length && (<LazyLoader loader={() => import("@/components/music-player")} props={{ playList }} />)
+      }
     </>
   )
 }

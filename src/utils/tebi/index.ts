@@ -13,7 +13,7 @@ class TebiClient {
   constructor() {
     this.options = {
       region: process.env.TEBI_REGION as string,
-      endpoint: process.env.TEBI_END_POINT as string,
+      endpoint: process.env.NEXT_PUBLIC_TEBI_END_POINT as string,
       credentials: {
         accessKeyId: process.env.TEBI_ACCESS_KEY as string,
         secretAccessKey: process.env.TEBI_SECRET_KEY as string,
