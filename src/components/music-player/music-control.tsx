@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import {useCallback, useEffect, useState} from "react";
 import { AudioState } from "./types";
 
 const timeFomatter = (time: number | undefined) => {
@@ -50,10 +50,16 @@ const Progress = ({value}: { value: number }) => {
 
 
 const MusicControl = ({ audioState, onPlayingChange }: { audioState: AudioState, onPlayingChange: OnChangeFunc }) => {
+  const [isExpand, setIsExpand] = useState(false)
+
+  useEffect(() => {
+    requestAnimationFrame(() => setIsExpand(true))
+  }, []);
+
   return (
     <section className="h-[var(--music-player-height)]">
       <div
-        className="box-border fixed left-0 bottom-0 bg-white w-full h-[var(--music-player-height)] shadow-music-player bg-background-image z-[99] border-t-black border p-2">
+        className={`${isExpand && "translate-y-0"} box-border fixed left-0 bottom-0 bg-white translate-y-[var(--music-player-height)] transition-transform delay-500 duration-500 ease-in-out w-full h-[var(--music-player-height)] shadow-music-player bg-background-image z-[99] border-t-black border p-2`}>
         <div className="w-full h-full lg:w-[920px] lg:px-6 px-2 mx-auto flex items-center bg-white">
           <AudioButton playing={audioState.playing} onChange={onPlayingChange} />
 
