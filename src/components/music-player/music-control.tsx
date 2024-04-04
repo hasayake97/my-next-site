@@ -1,7 +1,5 @@
-"use client";
-
 import {useCallback, useEffect, useState} from "react";
-import { AudioState } from "./types";
+import {AudioState} from "./types";
 
 const timeFomatter = (time: number | undefined) => {
   if (typeof time !== "number") { return "00:00" }
@@ -55,7 +53,7 @@ const MusicControl = ({ audioState, onPlayingChange }: { audioState: AudioState,
   const [isExpand, setIsExpand] = useState(false)
 
   useEffect(() => {
-    requestAnimationFrame(() => setIsExpand(true))
+    requestAnimationFrame(() => setIsExpand(true));
   }, []);
 
   useEffect(() => {
@@ -63,7 +61,7 @@ const MusicControl = ({ audioState, onPlayingChange }: { audioState: AudioState,
 
     if (!audioState.playing && isExpand) {
       const timer = setTimeout(() => setIsExpand(false), 6 * 1000);
-      return () => (clearTimeout(timer))
+      return () => (clearTimeout(timer));
     }
   }, [audioState.playing, isExpand]);
 
