@@ -66,6 +66,15 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
     })
   }, [])
 
+  const onEnded = useCallback((event: Event) => {
+    const maxIndex = playList.length - 1;
+    const currentFileName = decodeURIComponent((event.target as HTMLAudioElement).src).split('/').slice(-1)[0];
+    const currentIndex = playList.findIndex(item => item.Key === currentFileName);
+    const nextIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+
+    onPlayer(playList[nextIndex]);
+  }, [playList, onPlayer])
+
   const onPlayingChange = useCallback((playing: boolean) => {
     if (audio.ref.current && !audio.ref.current?.src) {
       audio.ref.current.src = audioState.src;
@@ -81,9 +90,10 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
   useEffect(() => {
     audio.run(audioState.src, (ref) => {
       ref.addEventListener("canplay", onCanplay, false);
+      ref.addEventListener("ended", onEnded, false);
       ref.addEventListener("timeupdate", onTimeupdate, false);
     });
-  }, [audio, audioState.src, onCanplay, onTimeupdate]);
+  }, [audio, audioState.src, onCanplay, onEnded, onTimeupdate]);
 
   useEffect(() => {
     if (audio.ref.current?.src) {
@@ -96,10 +106,11 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
     return () => {
       audio.destroy((ref) => {
         ref.removeEventListener("canplay", onCanplay, false);
+        ref.removeEventListener("ended", onEnded, false);
         ref.removeEventListener("timeupdate", onTimeupdate, false);
       })
     }
-  } ,[audio, onCanplay, onTimeupdate])
+  } ,[audio, onCanplay, onEnded, onTimeupdate])
 
   return (
     <>
