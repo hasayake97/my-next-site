@@ -1,6 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import {AudioState} from "./types";
 
+import "./index.css";
 const timeFomatter = (time: number | undefined) => {
   if (typeof time !== "number") { return "00:00" }
 
@@ -9,6 +10,10 @@ const timeFomatter = (time: number | undefined) => {
 
   return String(minutes).padStart(2, "0") + ":" + String(seconds).padStart(2, "0");
 };
+
+const Loading = () => (
+  <span className="music-loader w-8 h-8 bg-black" />
+)
 
 const Play = () => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
@@ -28,14 +33,18 @@ const Pause = () => (
 );
 
 type OnChangeFunc = (playing: boolean) => void
-const AudioButton = ({ playing, onChange } : { playing: boolean, onChange: OnChangeFunc }) => {
+const AudioButton = ({ playing, loading, onChange } : { playing: boolean, loading: boolean, onChange: OnChangeFunc }) => {
   const onClick = useCallback(() => {
     onChange(!playing)
   }, [playing, onChange])
 
   return (
-    <button onClick={onClick}>
-      { playing ? <Pause/> : <Play/> }
+    <button onClick={onClick} className="flex p-1 items-center">
+      {
+        loading
+          ? <Loading />
+          : playing ? <Pause/> : <Play/>
+      }
     </button>
   )
 };
@@ -57,20 +66,28 @@ const MusicControl = ({ audioState, onPlayingChange }: { audioState: AudioState,
   }, []);
 
   useEffect(() => {
-    if (audioState.playing && !isExpand) { setIsExpand(true); }
+    if (audioState.loading) {
+      setIsExpand(true);
+      return;
+    }
+
+    if (audioState.playing && !isExpand) {
+      setIsExpand(true);
+    }
 
     if (!audioState.playing && isExpand) {
       const timer = setTimeout(() => setIsExpand(false), 6 * 1000);
       return () => (clearTimeout(timer));
     }
-  }, [audioState.playing, isExpand]);
+
+  }, [audioState.loading, audioState.playing, isExpand]);
 
   return (
     <section className="h-[var(--music-player-height)]">
       <div
         className={`${isExpand ? "translate-y-0" : "translate-y-[var(--music-player-height)]"} box-border fixed left-0 bottom-0 bg-white transition-transform delay-300 duration-500 ease-in-out w-full h-[var(--music-player-height)] shadow-music-player bg-background-image z-[99] border-t-black border p-2`}>
         <div className="w-full h-full lg:w-[920px] lg:px-6 px-2 mx-auto flex items-center bg-white">
-          <AudioButton playing={audioState.playing} onChange={onPlayingChange} />
+          <AudioButton playing={audioState.playing} loading={audioState.loading} onChange={onPlayingChange} />
 
           <div className="ml-4 h-full flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">

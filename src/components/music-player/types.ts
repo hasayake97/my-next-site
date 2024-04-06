@@ -5,9 +5,10 @@ export interface AudioState {
   src: string
   volume: number
   playing: boolean
+  loading: boolean
   duration: number
   currentTime: number
-};
+}
 
 export type AudioAction = {
   type: "change",

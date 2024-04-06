@@ -26,11 +26,12 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
   const firstKey = (playList[0].Key as string)
   const audio = useAudio();
   const [audioState, dispatchAudioState] = useReducer(reducer, {
-    playing: false,
     volume: 0,
     duration: 0,
     currentTime: 0,
     name: firstKey,
+    playing: false,
+    loading: false,
     src: getPlayUrl(firstKey)
   })
 
@@ -41,6 +42,7 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
       type: "change",
       payload: {
         name: fileKey,
+        loading: true,
         playing: false,
         src: getPlayUrl(fileKey)
       }
@@ -51,8 +53,9 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
     dispatchAudioState({
       type: "change",
       payload: {
+        loading: false,
         playing: true,
-        duration:  (event.target as HTMLAudioElement).duration
+        duration: (event.target as HTMLAudioElement).duration
       }
     })
   }, [])
@@ -75,6 +78,13 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
     onPlayer(playList[nextIndex]);
   }, [playList, onPlayer])
 
+  const onWaiting = useCallback(() => {
+    dispatchAudioState({
+      type: "change",
+      payload: { loading: true }
+    })
+  }, [])
+
   const onPlayingChange = useCallback((playing: boolean) => {
     if (audio.ref.current && !audio.ref.current?.src) {
       audio.ref.current.src = audioState.src;
@@ -91,9 +101,10 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
     audio.run(audioState.src, (ref) => {
       ref.addEventListener("canplay", onCanplay, false);
       ref.addEventListener("ended", onEnded, false);
+      ref.addEventListener("waiting", onWaiting, false);
       ref.addEventListener("timeupdate", onTimeupdate, false);
     });
-  }, [audio, audioState.src, onCanplay, onEnded, onTimeupdate]);
+  }, [audio, audioState.src, onCanplay, onEnded, onWaiting, onTimeupdate]);
 
   useEffect(() => {
     if (audio.ref.current?.src) {
@@ -107,10 +118,11 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
       audio.destroy((ref) => {
         ref.removeEventListener("canplay", onCanplay, false);
         ref.removeEventListener("ended", onEnded, false);
+        ref.removeEventListener("waiting", onWaiting, false);
         ref.removeEventListener("timeupdate", onTimeupdate, false);
       })
     }
-  } ,[audio, onCanplay, onEnded, onTimeupdate])
+  } ,[audio, onCanplay, onEnded, onWaiting, onTimeupdate])
 
   return (
     <>
