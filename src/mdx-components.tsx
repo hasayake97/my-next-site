@@ -36,7 +36,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       </h5>
     ),
 
-    hr: () => (<hr className="bg-black h-1 mb-6" />),
+    hr: () => (<hr className="bg-black h-1 my-6" />),
 
     p: ({ children }) => (<Text inlineBlock className="lg:mb-6 sm:mb-5 mb-4">{children}</Text>),
 
