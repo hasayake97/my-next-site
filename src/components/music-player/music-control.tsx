@@ -1,8 +1,7 @@
 import {useCallback, useEffect, useState} from "react";
 import {AudioState} from "./types";
 
-import "./index.css";
-const timeFomatter = (time: number | undefined) => {
+const timeFormatter = (time: number | undefined) => {
   if (typeof time !== "number") { return "00:00" }
 
   const minutes = Math.floor(time / 60);
@@ -12,28 +11,29 @@ const timeFomatter = (time: number | undefined) => {
 };
 
 const Loading = () => (
-  <span className="music-loader w-8 h-8 bg-black" />
+  <svg className="animate-spin h-8 w-8 text-black-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" stroke="#fff" d="M21 12a9 9 0 01-9 9"/>
+  </svg>
 )
 
 const Play = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-    <path fillRule="evenodd"
-          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm14.024-.983a1.125 1.125 0 0 1 0 1.966l-5.603 3.113A1.125 1.125 0 0 1 9 15.113V8.887c0-.857.921-1.4 1.671-.983l5.603 3.113Z"
-          clipRule="evenodd"/>
+  <svg className="h-8 w-8 text-black-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+          d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"/>
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
   </svg>
-
 );
 
 const Pause = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-8 h-8">
-    <path fillRule="evenodd"
-          d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM9 8.25a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75h.75a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75H9Zm5.25 0a.75.75 0 0 0-.75.75v6c0 .414.336.75.75.75H15a.75.75 0 0 0 .75-.75V9a.75.75 0 0 0-.75-.75h-.75Z"
-          clipRule="evenodd"/>
+  <svg className="h-8 w-8 text-black-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
+          d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
   </svg>
 );
 
 type OnChangeFunc = (playing: boolean) => void
-const AudioButton = ({ playing, loading, onChange } : { playing: boolean, loading: boolean, onChange: OnChangeFunc }) => {
+const AudioButton = ({playing, loading, onChange}: { playing: boolean, loading: boolean, onChange: OnChangeFunc }) => {
   const onClick = useCallback(() => {
     onChange(!playing)
   }, [playing, onChange])
@@ -45,6 +45,7 @@ const AudioButton = ({ playing, loading, onChange } : { playing: boolean, loadin
           ? <Loading />
           : playing ? <Pause/> : <Play/>
       }
+      {/*<Loading /> <Play />*/}
     </button>
   )
 };
@@ -92,7 +93,7 @@ const MusicControl = ({ audioState, onPlayingChange }: { audioState: AudioState,
           <div className="ml-4 h-full flex-1 flex flex-col justify-between">
             <div className="flex items-center justify-between">
               <span className="max-w-[158px] sm:max-w-[68%] overflow-ellipsis overflow-hidden whitespace-nowrap sm:text-base text-sm font-bold" title={audioState.name}>{audioState.name || "请选择歌曲"}</span>
-              <span className="ml-4 text-xs">{timeFomatter(Math.floor(audioState.currentTime))} / {timeFomatter(Math.floor(audioState.duration))}</span>
+              <span className="ml-4 text-xs">{timeFormatter(Math.floor(audioState.currentTime))} / {timeFormatter(Math.floor(audioState.duration))}</span>
             </div>
 
             <Progress value={ audioState.currentTime / audioState.duration * 100 } />
