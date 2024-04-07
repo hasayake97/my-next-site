@@ -45,7 +45,6 @@ const AudioButton = ({playing, loading, onChange}: { playing: boolean, loading: 
           ? <Loading />
           : playing ? <Pause/> : <Play/>
       }
-      {/*<Loading /> <Play />*/}
     </button>
   )
 };
