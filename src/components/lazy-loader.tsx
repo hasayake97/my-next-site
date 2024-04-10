@@ -1,7 +1,7 @@
-import Loading from "@/components/loading";
-import { lazy, Suspense, ComponentType } from "react";
+import Loading from '@/components/loading'
+import { lazy, Suspense, ComponentType } from 'react'
 
-type PromiseComponent = Promise<{default: ComponentType<any>}>
+type PromiseComponent = Promise<{ default: ComponentType<any> }>
 type Loader = () => PromiseComponent
 interface LazyLoaderProps {
   props?: {}
@@ -21,7 +21,7 @@ const LazyLoader = ({ props, loader }: LazyLoaderProps) => {
     <Suspense fallback={<Loading />}>
       <LazyComponent {...props} />
     </Suspense>
-  );
-};
+  )
+}
 
-export default LazyLoader;
+export default LazyLoader

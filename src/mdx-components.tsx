@@ -1,8 +1,8 @@
-import type { MDXComponents } from "mdx/types";
+import type { MDXComponents } from 'mdx/types'
 
-import Text from "@/components/text";
-import Image, { ImageProps } from "next/image";
-import LinkExt, { LinkExtProps } from "@/components/link-ext";
+import Text from '@/components/text'
+import Image, { ImageProps } from 'next/image'
+import LinkExt, { LinkExtProps } from '@/components/link-ext'
 
 export const useMDXComponents = (components: MDXComponents): MDXComponents => {
   return {
@@ -36,13 +36,22 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       </h5>
     ),
 
-    hr: () => (<hr className="bg-black h-1 my-6" />),
+    hr: () => <hr className="bg-black h-1 my-6" />,
 
-    p: ({ children }) => (<Text inlineBlock className="lg:mb-6 sm:mb-5 mb-4">{children}</Text>),
+    p: ({ children }) => (
+      <Text inlineBlock className="lg:mb-6 sm:mb-5 mb-4">
+        {children}
+      </Text>
+    ),
 
-    a: (props) => (<LinkExt {...props as LinkExtProps} />),
+    a: (props) => <LinkExt {...(props as LinkExtProps)} />,
 
-    img: (props) => (<Image {...({ ...props, width: 400, height: 400, className: "mx-auto object-fill" } as ImageProps)} alt={props.alt || ""} />),
+    img: (props) => (
+      <Image
+        {...({ ...props, width: 400, height: 400, className: 'mx-auto object-fill' } as ImageProps)}
+        alt={props.alt || ''}
+      />
+    ),
 
     li: ({ children }) => {
       if (Array.isArray(children)) {
@@ -63,6 +72,6 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       )
     },
 
-    ...components
+    ...components,
   }
-};
+}

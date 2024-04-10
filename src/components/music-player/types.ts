@@ -1,4 +1,4 @@
-import type {_Object} from "@aws-sdk/client-s3";
+import type { _Object } from '@aws-sdk/client-s3'
 
 export interface AudioState {
   name: string
@@ -11,12 +11,12 @@ export interface AudioState {
 }
 
 export type AudioAction = {
-  type: "change",
+  type: 'change'
   payload: {
     [k in keyof AudioState]?: AudioState[k]
   }
 }
 
-export type PlayListItem = _Object;
+export type PlayListItem = _Object
 
-export type PlayList = PlayListItem[];
+export type PlayList = PlayListItem[]

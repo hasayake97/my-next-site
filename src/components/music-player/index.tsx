@@ -1,14 +1,10 @@
-"use client";
+'use client'
 
-import {
-  useEffect,
-  useReducer,
-  useCallback
-} from "react";
-import useAudio from "./useAudio";
-import MusicList from "./music-list";
-import MusicControl from "./music-control";
-import { PlayList, PlayListItem, AudioState, AudioAction } from "./types";
+import { useEffect, useReducer, useCallback } from 'react'
+import useAudio from './useAudio'
+import MusicList from './music-list'
+import MusicControl from './music-control'
+import { PlayList, PlayListItem, AudioState, AudioAction } from './types'
 
 const getPlayUrl = (key: string) => {
   return [process.env.NEXT_PUBLIC_TEBI_END_POINT, process.env.NEXT_PUBLIC_TEBI_BUCKET_MUSIC_NAME, key].join('/')
@@ -16,15 +12,17 @@ const getPlayUrl = (key: string) => {
 
 const reducer = (state: AudioState, action: AudioAction) => {
   switch (action.type) {
-    case "change": {
-      return { ...state, ...action.payload };
+    case 'change': {
+      return { ...state, ...action.payload }
     }
-    default: { return state; }
+    default: {
+      return state
+    }
   }
 }
 const MusicPlayer = ({ playList }: { playList: PlayList }) => {
-  const firstKey = (playList[0].Key as string)
-  const audio = useAudio();
+  const firstKey = playList[0].Key as string
+  const audio = useAudio()
   const [audioState, dispatchAudioState] = useReducer(reducer, {
     volume: 0,
     duration: 0,
@@ -32,97 +30,105 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
     name: firstKey,
     playing: false,
     loading: false,
-    src: getPlayUrl(firstKey)
+    src: getPlayUrl(firstKey),
   })
 
   const onPlayer = useCallback((musicItem: PlayListItem) => {
     const fileKey = musicItem.Key as string
 
     dispatchAudioState({
-      type: "change",
+      type: 'change',
       payload: {
         name: fileKey,
         loading: true,
         playing: false,
-        src: getPlayUrl(fileKey)
-      }
+        src: getPlayUrl(fileKey),
+      },
     })
-  }, []);
+  }, [])
 
   const onCanplay = useCallback((event: Event) => {
     dispatchAudioState({
-      type: "change",
+      type: 'change',
       payload: {
         loading: false,
         playing: true,
-        duration: (event.target as HTMLAudioElement).duration
-      }
+        duration: (event.target as HTMLAudioElement).duration,
+      },
     })
   }, [])
 
   const onTimeupdate = useCallback((event: Event) => {
     dispatchAudioState({
-      type: "change",
+      type: 'change',
       payload: {
-        currentTime: (event.target as HTMLAudioElement).currentTime
-      }
+        currentTime: (event.target as HTMLAudioElement).currentTime,
+      },
     })
   }, [])
 
-  const onEnded = useCallback((event: Event) => {
-    const maxIndex = playList.length - 1;
-    const currentFileName = decodeURIComponent((event.target as HTMLAudioElement).src).split('/').slice(-1)[0];
-    const currentIndex = playList.findIndex(item => item.Key === currentFileName);
-    const nextIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1;
+  const onEnded = useCallback(
+    (event: Event) => {
+      const maxIndex = playList.length - 1
+      const currentFileName = decodeURIComponent((event.target as HTMLAudioElement).src)
+        .split('/')
+        .slice(-1)[0]
+      const currentIndex = playList.findIndex((item) => item.Key === currentFileName)
+      const nextIndex = currentIndex >= maxIndex ? 0 : currentIndex + 1
 
-    onPlayer(playList[nextIndex]);
-  }, [playList, onPlayer])
+      onPlayer(playList[nextIndex])
+    },
+    [playList, onPlayer],
+  )
 
   const onWaiting = useCallback(() => {
     dispatchAudioState({
-      type: "change",
-      payload: { loading: true }
+      type: 'change',
+      payload: { loading: true },
     })
   }, [])
 
-  const onPlayingChange = useCallback((playing: boolean) => {
-    if (audio.ref.current && !audio.ref.current?.src) {
-      audio.ref.current.src = audioState.src;
-    }
+  const onPlayingChange = useCallback(
+    (playing: boolean) => {
+      if (audio.ref.current && !audio.ref.current?.src) {
+        audio.ref.current.src = audioState.src
+      }
 
-    dispatchAudioState({
-      type: "change",
-      payload: { playing }
-    })
-  }, [audioState.src, audio.ref])
+      dispatchAudioState({
+        type: 'change',
+        payload: { playing },
+      })
+    },
+    [audioState.src, audio.ref],
+  )
 
   // Audio 创建或音乐文件发生变化
   useEffect(() => {
     audio.run(audioState.src, (ref) => {
-      ref.addEventListener("canplay", onCanplay, false);
-      ref.addEventListener("ended", onEnded, false);
-      ref.addEventListener("waiting", onWaiting, false);
-      ref.addEventListener("timeupdate", onTimeupdate, false);
-    });
-  }, [audio, audioState.src, onCanplay, onEnded, onWaiting, onTimeupdate]);
+      ref.addEventListener('canplay', onCanplay, false)
+      ref.addEventListener('ended', onEnded, false)
+      ref.addEventListener('waiting', onWaiting, false)
+      ref.addEventListener('timeupdate', onTimeupdate, false)
+    })
+  }, [audio, audioState.src, onCanplay, onEnded, onWaiting, onTimeupdate])
 
   useEffect(() => {
     if (audio.ref.current?.src) {
-      audioState.playing ? audio.ref.current?.play() : audio.ref.current?.pause();
+      audioState.playing ? audio.ref.current?.play() : audio.ref.current?.pause()
     }
-  }, [audioState.playing, audio.ref]);
+  }, [audioState.playing, audio.ref])
 
   // 组件卸载
   useEffect(() => {
     return () => {
       audio.destroy((ref) => {
-        ref.removeEventListener("canplay", onCanplay, false);
-        ref.removeEventListener("ended", onEnded, false);
-        ref.removeEventListener("waiting", onWaiting, false);
-        ref.removeEventListener("timeupdate", onTimeupdate, false);
+        ref.removeEventListener('canplay', onCanplay, false)
+        ref.removeEventListener('ended', onEnded, false)
+        ref.removeEventListener('waiting', onWaiting, false)
+        ref.removeEventListener('timeupdate', onTimeupdate, false)
       })
     }
-  } ,[audio, onCanplay, onEnded, onWaiting, onTimeupdate])
+  }, [audio, onCanplay, onEnded, onWaiting, onTimeupdate])
 
   return (
     <>
@@ -130,6 +136,6 @@ const MusicPlayer = ({ playList }: { playList: PlayList }) => {
       <MusicControl audioState={audioState} onPlayingChange={onPlayingChange} />
     </>
   )
-};
+}
 
-export default MusicPlayer;
+export default MusicPlayer

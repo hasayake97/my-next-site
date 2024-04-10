@@ -1,5 +1,5 @@
-import "./loading.css";
+import './loading.css'
 
-const loading = () => <div className="loader" />;
+const loading = () => <div className="loader" />
 
-export default loading;
+export default loading

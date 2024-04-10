@@ -1,31 +1,31 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss'
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/mdx-components.tsx",
+    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
+    './src/mdx-components.tsx',
   ],
   theme: {
     extend: {
-      maxWidth:{
-        "content": "var(--max-content-width)"
+      maxWidth: {
+        content: 'var(--max-content-width)',
       },
-      minWidth:{
-        "content": "var(--min-content-width)"
+      minWidth: {
+        content: 'var(--min-content-width)',
       },
       boxShadow: {
-        "music-player": "0 0 12px 6px rgba(0, 0, 0, .2)"
+        'music-player': '0 0 12px 6px rgba(0, 0, 0, .2)',
       },
       backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "background-image": "url('data:image/svg+xml;charset=utf-8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"4\" height=\"4\"><circle cx=\"2\" cy=\"2\" r=\".5\"/></svg>')",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'background-image':
+          'url(\'data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" width="4" height="4"><circle cx="2" cy="2" r=".5"/></svg>\')',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
   plugins: [],
-};
-export default config;
+}
+export default config

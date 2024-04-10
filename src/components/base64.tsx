@@ -1,10 +1,10 @@
-"use client";
+'use client'
 
-import { useState, useCallback } from "react";
+import { useState, useCallback } from 'react'
 
-const toEncoder = (str: string) => btoa(encodeURIComponent(str));
+const toEncoder = (str: string) => btoa(encodeURIComponent(str))
 
-const toDecoder = (str: string) => atob(decodeURIComponent(str));
+const toDecoder = (str: string) => atob(decodeURIComponent(str))
 
 type Base64State = {
   isBase64: boolean
@@ -16,17 +16,21 @@ const Base64 = ({ children }: Readonly<{ children: React.ReactNode }>) => {
 
   const [base64State, setBase64State] = useState<Base64State>({
     isBase64: true,
-    children: toEncoder(_children)
+    children: toEncoder(_children),
   })
 
   const onClick = useCallback(() => {
     setBase64State(({ children, isBase64 }) => ({
       isBase64: !isBase64,
-      children: !isBase64 ? toEncoder(_children) : toDecoder(children)
+      children: !isBase64 ? toEncoder(_children) : toDecoder(children),
     }))
-  }, [_children]);
+  }, [_children])
 
-  return <span onClick={onClick} className="cursor-pointer">{base64State.children}</span>
-};
+  return (
+    <span onClick={onClick} className="cursor-pointer">
+      {base64State.children}
+    </span>
+  )
+}
 
-export default Base64;
+export default Base64
