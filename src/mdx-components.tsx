@@ -42,7 +42,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
       <p className="lg:mb-6 sm:mb-5 mb-4 text-sm sm:text-base">{children}</p>
     ),
 
-    a: (props) => <LinkExt {...(props as LinkExtProps)} />,
+    a: (props) => <LinkExt {...(props as LinkExtProps)} className="text-sm sm:text-base" />,
 
     img: (props) => (
       <Image
