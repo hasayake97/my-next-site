@@ -39,9 +39,7 @@ export const useMDXComponents = (components: MDXComponents): MDXComponents => {
     hr: () => <hr className="bg-black h-1 my-6" />,
 
     p: ({ children }) => (
-      <Text inlineBlock className="lg:mb-6 sm:mb-5 mb-4">
-        {children}
-      </Text>
+      <p className="lg:mb-6 sm:mb-5 mb-4 text-sm sm:text-base">{children}</p>
     ),
 
     a: (props) => <LinkExt {...(props as LinkExtProps)} />,

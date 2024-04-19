@@ -25,10 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-Hans-CN">
-      <body className={`${notoSerifSC.className} bg-background-image`}>
+      <body className={`${notoSerifSC.className}`}>
         <PageProvider config={pageConfig}>
-          <Header />
-          <main className="px-6 py-2 max-w-4xl">{children}</main>
+          <main className="max-w-full">{children}</main>
         </PageProvider>
       </body>
     </html>
