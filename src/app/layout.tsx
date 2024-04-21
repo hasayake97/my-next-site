@@ -2,7 +2,6 @@ import pageConfig from '@page'
 
 import type { Metadata } from 'next'
 import { Noto_Serif_SC } from 'next/font/google'
-import Header from '@/components/header'
 import { PageProvider } from '@/context/pageContext'
 
 import './globals.css'
@@ -27,7 +26,7 @@ export default function RootLayout({
     <html lang="zh-Hans-CN">
       <body className={`${notoSerifSC.className}`}>
         <PageProvider config={pageConfig}>
-          <main className="max-w-full">{children}</main>
+          <main>{children}</main>
         </PageProvider>
       </body>
     </html>
