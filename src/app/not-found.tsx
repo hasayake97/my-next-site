@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 const NotFound = () => (
   <section className="p-4">
-    <h1>404: Not Found.</h1>
+    404: Not Found.
   </section>
 )
 
