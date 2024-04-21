@@ -14,7 +14,7 @@ const Page = () => {
       <section className="overflow-hidden flex-1 px-8 pt-8 sm:pt-12 lg:pt-16 pb-12 relative">
         <Content/>
         <footer className="absolute px-8 left-0 bottom-3 w-full text-xs sm:text-sm">
-          &copy; {time.start} - {time.end} · Built with <Link href="https://nextjs.org" target="_blank">Next.js</Link> and <Link href="https://tailwind" target="_blank">Tailwind CSS</Link>.
+          &copy; {time.start} - {time.end} · Built with <Link href="https://nextjs.org" target="_blank">Next.js</Link> and <Link href="https://tailwindcss.com" target="_blank">Tailwind CSS</Link>.
         </footer>
       </section>
     </article>
