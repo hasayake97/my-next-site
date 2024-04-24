@@ -9,6 +9,9 @@
     "lint": "next lint",
     "format:fix": "prettier --write ."
   },
+  "engines": {
+    "node": ">=18.17.0"
+  },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.540.0",
     "install": "^0.13.0",
