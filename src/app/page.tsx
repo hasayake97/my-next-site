@@ -9,7 +9,7 @@ const Page = () => {
 
   return (
     <article className="w-full h-[100vh] flex flex-col lg:flex-row">
-      <header className="lg:w-[68%] lg:h-full w-full h-[30%] bg-no-repeat bg-center bg-[url('https://s21.ax1x.com/2024/04/28/pki6OlF.jpg')]" />
+      <header className="lg:w-[68%] lg:h-full w-full h-[30%] bg-no-repeat bg-center bg-[url('/images/cover.jpg')]" />
       <section className="overflow-hidden flex-1 px-8 pt-8 sm:pt-12 lg:pt-16 pb-12 relative">
         <Content />
         <footer className="absolute px-8 left-0 bottom-3 w-full text-xs sm:text-sm">
