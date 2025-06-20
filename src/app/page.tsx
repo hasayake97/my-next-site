@@ -3,9 +3,10 @@ import Image from 'next/image'
 import Content from './page.content.mdx'
 
 const Page = async () => {
-  const data = await fetch('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1', {
+  const response = await fetch('https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1', {
     next: { revalidate: 3600 },
-  }).then((res) => res.json())
+  })
+  const data = await response.json()
 
   const imageUrl = `https://cn.bing.com${data.images[0].url}`
 
