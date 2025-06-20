@@ -26,7 +26,7 @@ export default function RootLayout({
     <html lang="zh-Hans-CN">
       <body className={`${notoSerifSC.className}`}>
         <PageProvider config={pageConfig}>
-          <main>{children}</main>
+          <main className="h-full">{children}</main>
         </PageProvider>
       </body>
     </html>

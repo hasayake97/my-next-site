@@ -21,6 +21,10 @@
   }
 }
 
+html, body {
+  @apply h-full overflow-hidden;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
 }
