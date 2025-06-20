@@ -17,7 +17,7 @@ const Page = async () => {
 
   return (
     <article className="w-full h-[100vh] flex flex-col lg:flex-row">
-      <header className="lg:w-[68%] lg:h-full w-full h-[30%] relative grayscale-[80%]">
+      <header className="lg:w-[68%] lg:h-full md:h-[30%] w-full h-[24%] relative grayscale-[80%]">
         <Image src={imageUrl} alt="cover" fill={true} style={{ objectFit: 'cover', objectPosition: 'center' }} />
       </header>
 
