@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import Content from './page.content.mdx'
 
 const Page = async () => {
@@ -17,9 +16,10 @@ const Page = async () => {
 
   return (
     <article className="w-full h-full flex flex-col lg:flex-row">
-      <header className="lg:w-[68%] lg:h-full md:h-[30%] w-full h-[24%] relative grayscale-[80%]">
-        <Image src={imageUrl} alt="cover" fill={true} style={{ objectFit: 'cover', objectPosition: 'center' }} />
-      </header>
+      <header
+        className="lg:w-[68%] lg:h-full md:h-[30%] w-full h-[24%] relative grayscale-[80%] bg-cover bg-center"
+        style={{ backgroundImage: `url(${imageUrl})` }}
+      />
 
       <section className="overflow-hidden flex-1 px-8 pt-8 sm:pt-12 lg:pt-16 pb-12 relative">
         <Content />
