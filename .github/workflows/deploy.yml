@@ -39,6 +39,6 @@ jobs:
         with:
           project: "hasayake-my-next-sit-94"
           entrypoint: "jsr:@deno/nextjs-start/v15"
-          root: ".next"
-          include: .next, public
+          root: "."
+          
           
