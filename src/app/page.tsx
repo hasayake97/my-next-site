@@ -17,7 +17,7 @@ const Page = async () => {
   return (
     <article className="w-full h-full flex flex-col lg:flex-row">
       <header
-        className="lg:w-[68%] lg:h-full md:h-[30%] w-full h-[24%] relative grayscale-[80%] bg-cover bg-center"
+        className="lg:w-[68%] lg:h-full md:h-[30%] w-full h-[24%] relative bg-cover bg-center"
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
 
